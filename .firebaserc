@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cgameapp-ac1d4"
+  },
+  "targets": {
+    "cgameapp-ac1d4": {
+      "hosting": {
+        "admin": [
+          "adminweb-e"
+        ]
+      }
+    }
+  }
+}
