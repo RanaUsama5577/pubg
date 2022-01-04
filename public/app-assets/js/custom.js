@@ -6,19 +6,16 @@
  */
  "use strict";
  $(function () {
-     $('.loader').fadeOut("slow");
     
-     var element = $('.sidebar-left-secondary').find("[href='" + location.pathname + "']");
-     if (element.length == 0) {
-         element = $('.side-content-wrap').find("[href='" + location.pathname + "']");
-         element.parent().addClass('active');
-     }
-     else {
-         element.addClass('active-a');
-         var parent = element.parent().parent().attr('data-parent');
-         var element2 = $('.side-content-wrap').find("[data-item='" + parent + "']");
-         element2.addClass('active');
-     }
+    var path = location.pathname.replace("/","");
+    var element = $('#main-menu-navigation').find("[href='" + path + "']");
+    element.parent().addClass('active');
+    if (element.parent().hasClass('.nav-item')) {
+        
+    }
+    else {
+        element.parent().parent().parent().addClass('sidebar-group-active open');
+    }
  })
  function message(title, message, type, delay) {
      if (type == "success") {

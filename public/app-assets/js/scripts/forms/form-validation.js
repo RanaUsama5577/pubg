@@ -12,8 +12,7 @@ $(function () {
 
   var bootstrapForm = $('.needs-validation'),
     jqForm = $('#jquery-val-form'),
-    picker = $('#dob'),
-    dtPicker = $('#dob-bootstrap-val'),
+    picker = $('.picker'),
     select = $('.select2');
 
   // select2
@@ -33,16 +32,7 @@ $(function () {
   // Picker
   if (picker.length) {
     picker.flatpickr({
-      onReady: function (selectedDates, dateStr, instance) {
-        if (instance.isMobile) {
-          $(instance.mobileInput).attr('step', null);
-        }
-      }
-    });
-  }
-
-  if (dtPicker.length) {
-    dtPicker.flatpickr({
+      allowInput: true,
       onReady: function (selectedDates, dateStr, instance) {
         if (instance.isMobile) {
           $(instance.mobileInput).attr('step', null);
