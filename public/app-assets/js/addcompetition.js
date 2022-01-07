@@ -122,6 +122,7 @@ async function SaveCompetition(){
         partner:partner,
         recurring:recurring,
         comp_status:"idle",
+        joined:0,
     })
     .then(function(){
         TimerSweet("Success!","Saved Successfully","success",2000);

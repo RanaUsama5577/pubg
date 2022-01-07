@@ -43,7 +43,7 @@ async function createTable() {
     $('#competetions-h').html(doc_id +" " + uniqueId);
     
     var archive = collection(db, "competitions", doc_id, "GameSessions");
-    const q = query(archive);
+    const q = query(archive,orderBy("gameStarted"));
     try {
         onSnapshot(q, (querySnapshot)=>{
             $("#table-1").DataTable().destroy();
@@ -97,15 +97,8 @@ async function createTable() {
             else {
                 MixinSweet("No data to show", "", "info", 2000);
             }
-            $.fn.dataTable.moment( 'HH:mm MMM D, YY' );
-            $.fn.dataTable.moment( 'dd-MM-yyyy HH:mm:ss' );
             $('#table-1').DataTable({
-                "ordering" : true,
-                "columnDefs" : [
-                    {
-                        "targets":1, 
-                        "type":"date-eu"
-                    }],
+                "aaSorting": [],
             });
         })
     }

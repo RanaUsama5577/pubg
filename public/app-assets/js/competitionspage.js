@@ -33,7 +33,7 @@ $(async function () {
 })
 async function createTable() {
     const usersRef = collection(db, "competitions");
-    const q = query(usersRef);
+    const q = query(usersRef,orderBy("startDate"));
     //const querySnapshot = await getDocs(q);
     try {
         onSnapshot(q, (querySnapshot)=>{
@@ -69,14 +69,16 @@ async function createTable() {
                     var action = '<a style="color: #fff;cursor:pointer;margin-left:2px;" onclick="showDeleteModal(\'' + doc.id + '\')" class="btn btn-danger badge-shadow"><i class="fas fa-trash"></i></a>';
                     var a = "<a target='_blank' href='archive.html?Id="+doc.id+"&uniqueId="+competitionid+"'>"+header+"</a>";
                     var getLeaderboard = '<a onclick ="GetLeaderBoard(\'' + doc.id + '\')" class="btn btn-primary">LeaderBoard</a>';
-                    var row = '<tr><td>'+competitionid+'</td><td><span style="display:none">'+sortingDate+'</span>' + startDate + '</td><td><span style="display:none;">'+sortingEnd+'</span>' + endDate + '</td><td>' + a + '</td><td>' + joined + '</td><td>'+type+'</td><td>' + label + '</td><td>' + rank + '</td><td>' + maxAttempts + '</td><td>' + partner + '</td><td>' + reward + '</td><td>' + teamSizeMode + '</td><td>' + data.description + '</td><td>' + mapName + '</td><td>'+action+'</td></tr>';
+                    var row = '<tr><td>'+competitionid+'</td><td><span style="display:none">'+sortingDate+'</span>' + startDate + '</td><td><span style="display:none;">'+sortingEnd+'</span>' + endDate + '</td><td>' + a + '</td><td>' + label + '</td><td>'+type+'</td><td>' + joined + '</td><td>' + rank + '</td><td>' + maxAttempts + '</td><td>' + partner + '</td><td>' + reward + '</td><td>' + teamSizeMode + '</td><td>' + data.description + '</td><td>' + mapName + '</td><td>'+action+'</td></tr>';
                     $('#dataTable').append(row);
                 })
             }
             else {
                 MixinSweet("No data to show", "", "info", 2000);
             }
-            $('#table-1').DataTable();
+            $('#table-1').DataTable({
+                "aaSorting": [],
+            });
             $('.hideColumn').hide();
         })
     }
