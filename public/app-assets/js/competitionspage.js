@@ -32,7 +32,7 @@ $(async function () {
     createTable();
 })
 async function createTable() {
-    const usersRef = collection(db, "competitions");
+    const usersRef = collection(db, "competition_templates");
     const q = query(usersRef,orderBy("startDate"));
     //const querySnapshot = await getDocs(q);
     try {
@@ -110,7 +110,7 @@ function showDeleteModal(Id) {
 }
 
 function DeleteCompetition(Id){
-    deleteDoc(doc(db, "competitions", Id))
+    deleteDoc(doc(db, "competition_templates", Id))
         .then(function(){
             MixinSweet("DeletedSuccessfully","","success",2000);
         })

@@ -100,7 +100,7 @@ async function SaveCompetition(){
     S = S.setTime(S.getTime() + (getHours*60*60*1000));
     $('add_btn').addClass("btn-progress");
     var timestamp = new Date().getTime().toString()
-    await setDoc(doc(db, "competitions", header), {
+    await setDoc(doc(db, "competition_templates", header), {
         header:header,
         maxParticipants:parseInt(maxParticipants),
         rank:rank,

@@ -42,7 +42,7 @@ async function createTable() {
     $('#headingW').html(doc_id +" " + uniqueId +  " Archives");
     $('#competetions-h').html(doc_id +" " + uniqueId);
     
-    var archive = collection(db, "competitions", doc_id, "GameSessions");
+    var archive = collection(db, "competition_templates", doc_id, "GameSessions");
     const q = query(archive,orderBy("gameStarted"));
     try {
         onSnapshot(q, (querySnapshot)=>{
