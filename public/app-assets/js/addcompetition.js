@@ -113,9 +113,9 @@ async function SaveCompetition(){
         entryFee:parseInt(entryFee),
         reviewDate:end_Date,
         endDate: new Date(S),
-        reviewTime:reviewTime,
+        reviewTime_min:reviewTime,
         competitionid:timestamp,
-        startDate:start_Date,
+        nextEventDate:start_Date,
         state:0,
         mapName:mapName,
         shortDescription:shortDescription,
@@ -123,6 +123,7 @@ async function SaveCompetition(){
         recurring:recurring,
         comp_status:"idle",
         joined:0,
+        partnerid:null,
     })
     .then(function(){
         TimerSweet("Success!","Saved Successfully","success",2000);

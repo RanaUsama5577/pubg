@@ -32,7 +32,7 @@ $(async function () {
     createTable();
 })
 async function createTable() {
-    const usersRef = collection(db, "competition_templates");
+    const usersRef = collection(db, "competitions");
     const q = query(usersRef,orderBy("startDate"));
     //const querySnapshot = await getDocs(q);
     try {
