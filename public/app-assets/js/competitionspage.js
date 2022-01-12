@@ -33,7 +33,7 @@ $(async function () {
 })
 async function createTable() {
     const usersRef = collection(db, "competitions");
-    const q = query(usersRef,orderBy("startDate"));
+    const q = query(usersRef,orderBy("startDate","desc"));
     //const querySnapshot = await getDocs(q);
     try {
         onSnapshot(q, (querySnapshot)=>{
@@ -45,6 +45,7 @@ async function createTable() {
                     var header = data.header;
                     var startDate = data.startDate;
                     var endDate = data.endDate;
+                    var reviewDate = data.reviewDate;
                     var type = data.type;
                     var joined = data.joined == undefined?0:data.joined;
                     var maxAttempts = data.maxAttempts;
@@ -53,12 +54,18 @@ async function createTable() {
                     var mapName = data.mapName == undefined?"-":data.mapName;
                     var partner = data.partner;
                     var teamSizeMode = data.teamSizeMode;
-                    var competitionid = data.competitionid == undefined?"-":data.competitionid;
+                    var competitionid = doc.id == undefined?"-":doc.id;
                     var comp_status = data.comp_status == undefined?"Idle":data.comp_status;
                     startDate = startDate.toDate();
                     var sortingDate = startDate;
                     sortingDate = sortingDate.getTime();
                     startDate = $.format.date(startDate, 'd-MMM-yyyy HH:mm:ss');
+
+                    reviewDate = reviewDate.toDate();
+                    var sortingReview = reviewDate;
+                    sortingReview = sortingReview.getTime();
+                    reviewDate = $.format.date(reviewDate, 'd-MMM-yyyy HH:mm:ss');
+
                     endDate = endDate.toDate();
                     var sortingEnd = endDate;
                     sortingEnd = sortingEnd.getTime();
@@ -69,7 +76,7 @@ async function createTable() {
                     var action = '<a style="color: #fff;cursor:pointer;margin-left:2px;" onclick="showDeleteModal(\'' + doc.id + '\')" class="btn btn-danger badge-shadow"><i class="fas fa-trash"></i></a>';
                     var a = "<a target='_blank' href='archive.html?Id="+doc.id+"&uniqueId="+competitionid+"'>"+header+"</a>";
                     var getLeaderboard = '<a onclick ="GetLeaderBoard(\'' + doc.id + '\')" class="btn btn-primary">LeaderBoard</a>';
-                    var row = '<tr><td>'+competitionid+'</td><td><span style="display:none">'+sortingDate+'</span>' + startDate + '</td><td><span style="display:none;">'+sortingEnd+'</span>' + endDate + '</td><td>' + a + '</td><td>' + label + '</td><td>'+type+'</td><td>' + joined + '</td><td>' + rank + '</td><td>' + maxAttempts + '</td><td>' + partner + '</td><td>' + reward + '</td><td>' + teamSizeMode + '</td><td>' + data.description + '</td><td>' + mapName + '</td><td>'+action+'</td></tr>';
+                    var row = '<tr><td>'+competitionid+'</td><td><span style="display:none">'+sortingDate+'</span>' + startDate + '</td><td><span style="display:none">'+sortingReview+'</span>' + reviewDate + '</td><td><span style="display:none;">'+sortingEnd+'</span>' + endDate + '</td><td>' + a + '</td><td>' + label + '</td><td>'+type+'</td><td>' + joined + '</td><td>' + rank + '</td><td>' + maxAttempts + '</td><td>' + partner + '</td><td>' + reward + '</td><td>' + teamSizeMode + '</td><td>' + data.shortDescription + '</td><td>' + mapName + '</td><td>'+action+'</td></tr>';
                     $('#dataTable').append(row);
                 })
             }

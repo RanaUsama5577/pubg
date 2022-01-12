@@ -166,65 +166,22 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Partner</label>
+                                            <select class="form-control" id="partner">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label for="header">Header</label>
                                             <input type="text" id="header" class="form-control" maxlength="60">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Short Description</label>
-                                            <input type="text" id="shortDescription" class="form-control" maxlength="60">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <textarea class="form-control" rows="2" id="description"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Start Date</label>
-                                            <input type="text" readonly  id="startDate" class="form-control flatpickr-date-time flatpickr-input">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>End Date</label>
-                                            <input type="text" readonly id="endDate" class="form-control flatpickr-date-time flatpickr-input">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Review Time</label>
-                                            <input type="text" id="reviewTime" maxlength="4" value="60" class="form-control number_valid">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Entry Fee</label>
-                                            <input type="text" id="entryFee" class="form-control number_valid" maxlength="10">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Reward</label>
-                                            <input type="text" id="reward" class="form-control number_valid" maxlength="10">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Reward Type</label>
-                                            <select class="form-control" id="rewardType">
-                                                <option value="CASH">Cash</option>
-                                                <option value="GIFT_CARD">GIFT CARD</option>
-                                                <option value="CGAME_COINS">Coins</option>
-                                                <option value="UC_MONEY">UC Money</option>
-                                                
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Competition Type</label>
                                             <select class="form-control" id="type">
@@ -242,7 +199,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Map Name</label>
                                             <select class="form-control" id="mapName">
@@ -254,19 +211,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Target</label>
-                                            <input type="text" value="1" id="target" class="form-control number_valid" maxlength="10">
+                                            <label>Entry Fee</label>
+                                            <input type="text" id="entryFee" class="form-control number_valid" maxlength="10">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Max Attempts</label>
                                             <input type="text" id="maxAttempts" class="form-control number_valid" maxlength="10">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Team Size Mode</label>
                                             <select class="form-control" id="teamSizeMode">
@@ -276,7 +233,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Reward</label>
+                                            <input type="text" id="reward" class="form-control number_valid" maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Max Participants</label>
+                                            <input type="text" id="maxParticipants" class="form-control number_valid" maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Rank</label>
                                             <select class="form-control" id="rank">
@@ -293,24 +262,54 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Max Participants</label>
-                                            <input type="text" id="maxParticipants" class="form-control number_valid" maxlength="10">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>State</label>
-                                            <select class="form-control" id="state">
-                                                <option value="0">PUBLIC  </option>
-                                                <option value="1">BY TOKEN </option>
-                                                <option value="2">PERSONAL</option>
+                                            <label>Reward Type</label>
+                                            <select class="form-control" id="rewardType">
+                                                <option value="CASH">Cash</option>
+                                                <option value="GIFT_CARD">GIFT CARD</option>
+                                                <option value="CGAME_COINS">Coins</option>
+                                                <option value="UC_MONEY">UC Money</option>
+                                                
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Partner</label>
-                                            <input type="text" id="partner" class="form-control" maxlength="10">
+                                            <label>Review Time</label>
+                                            <input type="text" id="reviewTime" maxlength="4" value="60" class="form-control number_valid">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea type="text" id="shortDescription" class="form-control" maxlength="100"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Start Date</label>
+                                            <input type="text" readonly  id="startDate" class="form-control flatpickr-date-time flatpickr-input">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Days</label>
+                                                    <input type="text"  id="days" class="form-control number_valid" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Hours</label>
+                                                    <input type="text"  id="hours" class="form-control number_valid">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Mins</label>
+                                                    <input type="text"  id="mins" class="form-control number_valid">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -319,6 +318,8 @@
                                             <input type="checkbox" id="recurring">
                                         </div>
                                     </div>
+                                    
+                                    
                                 </div>
                             </div>
                             <div class="card-footer" style="text-align: end;">

@@ -27,29 +27,50 @@ $(async function () {
     updateDoc = exportData.updateDoc;
     setDoc = exportData.setDoc;
     deleteDoc = exportData.deleteDoc;
+    GetPartners();
 })
+async function GetPartners() {
+    const usersRef = collection(db, "partners");
+    const q = query(usersRef);
+    const querySnapshot = await getDocs(q);
+    try {
+        $("#partner").html('');
+        if (querySnapshot.size > 0) {
+            querySnapshot.forEach(function (doc) {
+                var data = doc.data();
+                var name = data.name;
+                var row = `<option value="${doc.id}">${name}</option>`;
+                $('#partner').append(row);
+            })
+        }
+        else {
+            MixinSweet("No data to show", "", "info", 2000);
+        }
+    }
+    catch (ex) {
+        console.log(ex);
+    }
+}
 async function SaveCompetition(){
     var header = $('#header').val();
     var maxParticipants = $('#maxParticipants').val();
     var rank = $('#rank').val();
     var teamSizeMode = $('#teamSizeMode').val();
     var maxAttempts = $('#maxAttempts').val();
-    var target = $('#target').val();
     var type = $('#type').val();
     var rewardType = $('#rewardType').val();
     var reward = $('#reward').val();
     var mapName = $('#mapName').val();
     var entryFee = $('#entryFee').val();
-    var endDate = $('#endDate').val();
     var startDate = $('#startDate').val();
     var shortDescription = $('#shortDescription').val();
     var partner = $('#partner').val();
     var reviewTime = parseInt($('#reviewTime').val());
+    var days = $('#days').val();
+    var hours = $('#hours').val();
+    var mins = $('#mins').val();
     var recurring = document.getElementById('recurring').checked;
-
     var start_Date = new Date(startDate);
-    var end_Date = new Date(endDate);
-    
     if(!header.replace(/\s/g, '').length){
         sweetMessage("Warning!","Please enter header value","warning");
         return false;
@@ -60,10 +81,6 @@ async function SaveCompetition(){
     }
     if(!maxAttempts.replace(/\s/g, '').length){
         sweetMessage("Warning!","Please enter Max Attempts","warning");
-        return false;
-    }
-    if(!target.replace(/\s/g, '').length){
-        sweetMessage("Warning!","Please enter Target","warning");
         return false;
     }
     if(!reward.replace(/\s/g, '').length){
@@ -82,23 +99,26 @@ async function SaveCompetition(){
         sweetMessage("Warning!","Please enter Short Description","warning");
         return false;
     }
-    if(!partner.replace(/\s/g, '').length){
-        sweetMessage("Warning!","Please enter Partner","warning");
+
+    if(!days.replace(/\s/g, '').length){
+        sweetMessage("Warning!","Please enter days","warning");
         return false;
     }
+    if(!hours.replace(/\s/g, '').length){
+        sweetMessage("Warning!","Please enter hours","warning");
+        return false;
+    }
+    if(!mins.replace(/\s/g, '').length){
+        sweetMessage("Warning!","Please enter mins","warning");
+        return false;
+    }
+
     if(start_Date < new Date()){
         sweetMessage("Warning!","Start date cannot be smaller than todays date","warning");
         return false;
     }
-    if(end_Date < start_Date){
-        sweetMessage("Warning!","End date cannot be smaller than end date","warning");
-        return false;
-    }
-    var endDate2 = end_Date;
-    var S = new Date(endDate2);
-    var getHours = reviewTime/60;
-    S = S.setTime(S.getTime() + (getHours*60*60*1000));
     $('add_btn').addClass("btn-progress");
+    var durtionMins = (days *1440) + (hours * 60) + mins; 
     var timestamp = new Date().getTime().toString()
     await setDoc(doc(db, "competition_templates", header), {
         header:header,
@@ -106,24 +126,20 @@ async function SaveCompetition(){
         rank:rank,
         teamSizeMode:teamSizeMode,
         maxAttempts:parseInt(maxAttempts),
-        target:parseInt(target),
         type:type,
         rewardType:rewardType,
         reward:parseInt(reward),
         entryFee:parseInt(entryFee),
-        reviewDate:end_Date,
-        endDate: new Date(S),
         reviewTime_min:reviewTime,
         competitionid:timestamp,
         nextEventDate:start_Date,
-        state:0,
         mapName:mapName,
         shortDescription:shortDescription,
         partner:partner,
         recurring:recurring,
-        comp_status:"idle",
-        joined:0,
-        partnerid:null,
+        comp_mode:"LeaderBoard",
+        partnerid:partner,
+        duration_min:durtionMins,
     })
     .then(function(){
         TimerSweet("Success!","Saved Successfully","success",2000);
