@@ -139,7 +139,7 @@ async function SaveCompetition(){
         recurring:recurring,
         comp_mode:"LeaderBoard",
         partnerid:partner,
-        duration_min:durtionMins,
+        duration_min:parseInt(durtionMins),
     })
     .then(function(){
         TimerSweet("Success!","Saved Successfully","success",2000);
