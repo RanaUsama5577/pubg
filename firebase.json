@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target":"admin",
+    "target": "admin",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -13,5 +13,16 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "emulators": {
+    "firestore": {
+      "port": 8080
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true
+    }
   }
 }
