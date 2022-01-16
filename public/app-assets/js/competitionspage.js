@@ -11,6 +11,7 @@ var orderBy;
 var updateDoc;
 var deleteDoc;
 var setDoc;
+var limit;
 var onSnapshot;
 $(async function () {
     await import('/app-assets/js/firebase.js').then(function (exports) {
@@ -29,6 +30,7 @@ $(async function () {
     setDoc = exportData.setDoc;
     deleteDoc = exportData.deleteDoc;
     onSnapshot = exportData.onSnapshot;
+    limit = exportData.limit;
     createTable();
 })
 async function createTable() {
@@ -46,14 +48,14 @@ async function createTable() {
                     var startDate = data.startDate;
                     var endDate = data.endDate;
                     var reviewDate = data.reviewDate;
-                    var type = data.type;
+                    var type = data.type == undefined?"-":data.type;
                     var joined = data.joined == undefined?0:data.joined;
                     var maxAttempts = data.maxAttempts;
-                    var rank = data.rank;
-                    var reward = data.reward;
+                    var rank = data.rank == undefined?"-":data.rank;
+                    var reward = data.reward == undefined?"-":data.reward;
                     var mapName = data.mapName == undefined?"-":data.mapName;
-                    var partner = data.partner;
-                    var teamSizeMode = data.teamSizeMode;
+                    var partner = data.partner == undefined?"-":data.partner;
+                    var teamSizeMode = data.teamSizeMode == undefined?"-":data.teamSizeMode;
                     var competitionid = doc.id == undefined?"-":doc.id;
                     var comp_status = data.comp_status == undefined?"Idle":data.comp_status;
                     startDate = startDate.toDate();
@@ -76,7 +78,7 @@ async function createTable() {
                     var action = '<a style="color: #fff;cursor:pointer;margin-left:2px;" onclick="showDeleteModal(\'' + doc.id + '\')" class="btn btn-danger badge-shadow"><i class="fas fa-trash"></i></a>';
                     var a = "<a target='_blank' href='archive.html?Id="+doc.id+"&uniqueId="+competitionid+"'>"+header+"</a>";
                     var getLeaderboard = '<a onclick ="GetLeaderBoard(\'' + doc.id + '\')" class="btn btn-primary">LeaderBoard</a>';
-                    var row = '<tr><td>'+competitionid+'</td><td><span style="display:none">'+sortingDate+'</span>' + startDate + '</td><td><span style="display:none">'+sortingReview+'</span>' + reviewDate + '</td><td><span style="display:none;">'+sortingEnd+'</span>' + endDate + '</td><td>' + a + '</td><td>' + label + '</td><td>'+type+'</td><td>' + joined + '</td><td>' + rank + '</td><td>' + maxAttempts + '</td><td>' + partner + '</td><td>' + reward + '</td><td>' + teamSizeMode + '</td><td>' + data.shortDescription + '</td><td>' + mapName + '</td><td>'+action+'</td></tr>';
+                    var row = '<tr><td>'+competitionid+'</td><td><span style="display:none">'+sortingDate+'</span>' + startDate + '</td><td><span style="display:none">'+sortingReview+'</span>' + reviewDate + '</td><td><span style="display:none;">'+sortingEnd+'</span>' + endDate + '</td><td>' + a + '</td><td>' + label + '</td><td>'+type+'</td><td>' + joined + '</td><td>' + rank + '</td><td>' + maxAttempts + '</td><td>'+getLeaderboard+'</td><td>' + partner + '</td><td>' + reward + '</td><td>' + teamSizeMode + '</td><td>' + data.shortDescription + '</td><td>' + mapName + '</td><td>'+action+'</td></tr>';
                     $('#dataTable').append(row);
                 })
             }
@@ -126,6 +128,30 @@ function DeleteCompetition(Id){
         })
 }
 
-function GetLeaderBoard(Id){
-    
+async function GetLeaderBoard(Id){
+    var LeaderBoard = collection(db, "competitions", Id, "MaxScoreAttempt");
+    const q = query(LeaderBoard,orderBy("score"), limit(10));
+
+    const querySnapshot = await getDocs(q);
+        $("#table-2").DataTable().destroy();
+        $("#dataTable2").html(''); 
+        if (querySnapshot.size > 0) {
+            querySnapshot.forEach((doc) => {
+                var data = doc.data();
+                var attempts = data.attempts;
+                var fname = data.fname;
+                var level = data.level;
+                var score = data.score;
+                var userId = data.userId;
+                var row = '<tr><td>'+fname+'</td><td>' + attempts + '</td><td>' + level + '</td><td>' + score + '</td></tr>';
+                $('#dataTable2').append(row);
+            });
+        }
+        else {
+            MixinSweet("No data to show", "", "info", 2000);
+        }
+        $('#leaderBoardModal').modal('show');
+        $('#table-2').DataTable({
+            "aaSorting": [],
+        });
 }

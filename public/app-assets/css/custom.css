@@ -1,3 +1,12 @@
+.btn-primary:hover:not(.disabled):not(:disabled) {
+    box-shadow: 0 8px 25px -8px #f0a967 !important;
+}
+
+.lg-outer {
+    z-index: 1055 !important;
+    background: #141517;
+}
+/*  */
 .custombadge-outline {
     display: inline-block;
     padding: 5px 8px;

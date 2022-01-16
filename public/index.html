@@ -184,7 +184,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Competition Type</label>
-                                            <select class="form-control" id="type">
+                                            <select class="form-select" id="type">
                                                 <option value="MOST_KILLS">MOST KILLS</option>
                                                 <option value="MOST_HEADSHOTS">MOST HEAD SHOTS</option>
                                                 <option value="MOST_CHICKEN_DINNERS">MOST CHICKEN DINNERS</option>
@@ -202,7 +202,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Map Name</label>
-                                            <select class="form-control" id="mapName">
+                                            <select class="form-select" id="mapName">
                                                 <option value="Erangel">Erangel</option>
                                                 <option value="Livik">Livik</option>
                                                 <option value="Miramar">Miramar</option>
@@ -226,7 +226,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Team Size Mode</label>
-                                            <select class="form-control" id="teamSizeMode">
+                                            <select class="form-select" id="teamSizeMode">
                                                 <option value="Solo">Solo</option>
                                                 <option value="Duo">Duo</option>
                                                 <option value="Squad">Squad</option>
@@ -248,7 +248,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Rank</label>
-                                            <select class="form-control" id="rank">
+                                            <select class="form-select" id="rank">
                                                 <option selected value="Auto">Auto</option>
                                                 <option value="Bronze">Bronze </option>
                                                 <option value="Silver">Silver</option>
@@ -263,7 +263,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Reward Type</label>
-                                            <select class="form-control" id="rewardType">
+                                            <select class="form-select" id="rewardType">
                                                 <option value="CASH">Cash</option>
                                                 <option value="GIFT_CARD">GIFT CARD</option>
                                                 <option value="CGAME_COINS">Coins</option>
@@ -290,24 +290,31 @@
                                             <input type="text" readonly  id="startDate" class="form-control flatpickr-date-time flatpickr-input">
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
+                                        <p>Duration</p>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Days</label>
-                                                    <input type="text"  id="days" class="form-control number_valid" >
+                                                    <select class="form-select" id="days">
+
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Hours</label>
-                                                    <input type="text"  id="hours" class="form-control number_valid">
+                                                    <select class="form-select" id="hours">
+
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Mins</label>
-                                                    <input type="text"  id="mins" class="form-control number_valid">
+                                                    <select class="form-select" id="mins">
+
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -318,8 +325,6 @@
                                             <input type="checkbox" id="recurring">
                                         </div>
                                     </div>
-                                    
-                                    
                                 </div>
                             </div>
                             <div class="card-footer" style="text-align: end;">

@@ -33,3 +33,4 @@ export let updateDoc = fbfirestore.updateDoc;
 export let deleteDoc = fbfirestore.deleteDoc;
 export let serverTimestamp = fbfirestore.serverTimestamp;
 export let onSnapshot = fbfirestore.onSnapshot;
+export let limit = fbfirestore.limit;

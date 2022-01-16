@@ -28,6 +28,7 @@ $(async function () {
     setDoc = exportData.setDoc;
     deleteDoc = exportData.deleteDoc;
     GetPartners();
+    FillDaysHoursMins();
 })
 async function GetPartners() {
     const usersRef = collection(db, "partners");
@@ -150,5 +151,18 @@ async function SaveCompetition(){
     .catch(function(error){
         console.log(error);
     })
-
+}
+function FillDaysHoursMins(){
+    for(var i=0; i<=365; i++){
+        var option = '<option value='+i+'>'+i+'</option>';
+        $('#days').append(option);
+    }
+    for(var i=0; i<=24; i++){
+        var option = '<option value='+i+'>'+i+'</option>';
+        $('#hours').append(option);
+    }
+    for(var i=0; i<=60; i++){
+        var option = '<option value='+i+'>'+i+'</option>';
+        $('#mins').append(option);
+    }
 }
