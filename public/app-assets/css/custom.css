@@ -1,3 +1,7 @@
+.dtr-data{
+    float:right;
+}
+/*  */
 .btn-primary:hover:not(.disabled):not(:disabled) {
     box-shadow: 0 8px 25px -8px #f0a967 !important;
 }
