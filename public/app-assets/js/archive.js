@@ -177,6 +177,7 @@ function showtargetModal(doc_id){
             var USER_LEVEL = data.targets.USER_LEVEL;
             var HASHTAG = data.targets.HASHTAG;
             var START = data.targets.START;
+            var SPECIAL_KILL = data.targets.SPECIAL_KILL;
             var endedList = GetImagesFromArray(ended);
             var killsList = GetImagesFromArray(KILLS);
             var LOBBYList = GetImagesFromArray(LOBBY);
@@ -184,6 +185,7 @@ function showtargetModal(doc_id){
             var USER_LEVELList = GetImagesFromArray(USER_LEVEL);
             var HASHTAGList = GetImagesFromArray(HASHTAG);
             var STARTList = GetImagesFromArray(START);
+            var SPECIAL_KILLList = GetImagesFromArray(SPECIAL_KILL);
             $('#desc').append('<p>Ended</p><div class="aniimated-thumbnials">'+endedList+'</div>');
             $('#desc').append('<p>Kills</p><div class="aniimated-thumbnials">'+killsList+'</div>');
             $('#desc').append('<p>Lobby</p><div class="aniimated-thumbnials">'+LOBBYList+'</div>');
@@ -191,6 +193,7 @@ function showtargetModal(doc_id){
             $('#desc').append('<p>User Level</p><div class="aniimated-thumbnials">'+USER_LEVELList+'</div>');
             $('#desc').append('<p>Hashtag</p><div class="aniimated-thumbnials">'+HASHTAGList+'</div>');
             $('#desc').append('<p>Start</p><div class="aniimated-thumbnials">'+STARTList+'</div>');
+            $('#desc').append('<p>Start</p><div class="aniimated-thumbnials">'+SPECIAL_KILLList+'</div>');
             
             $('.aniimated-thumbnials').lightGallery({
                 thumbnail: true,
