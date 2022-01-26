@@ -120,7 +120,13 @@ async function SaveCompetition(){
     }
     $('add_btn').addClass("btn-progress");
     var durtionMins = (days *1440) + (hours * 60) + mins; 
-    var timestamp = new Date().getTime().toString()
+    var timestamp = new Date().getTime().toString();
+    if($('#comp_mode').is(":checked")){
+        var comp_mode = "Head2Head";
+    }
+    else{
+        var comp_mode = "LeaderBoard";
+    }
     await setDoc(doc(db, "competition_templates", header), {
         header:header,
         maxParticipants:parseInt(maxParticipants),
@@ -138,7 +144,7 @@ async function SaveCompetition(){
         shortDescription:shortDescription,
         partner:partner,
         recurring:recurring,
-        comp_mode:"LeaderBoard",
+        comp_mode:comp_mode,
         partnerid:partner,
         duration_min:parseInt(durtionMins),
     })

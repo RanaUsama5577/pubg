@@ -35,7 +35,7 @@ $(async function () {
 })
 async function createTable() {
     const usersRef = collection(db, "competitions");
-    const q = query(usersRef,orderBy("startDate","desc"));
+    const q = query(usersRef,orderBy("startDate","asc"));
     //const querySnapshot = await getDocs(q);
     try {
         onSnapshot(q, (querySnapshot)=>{
