@@ -123,31 +123,49 @@ async function SaveCompetition(){
     var timestamp = new Date().getTime().toString();
     if($('#comp_mode').is(":checked")){
         var comp_mode = "Head2Head";
+        var data = {
+            header:header,
+            teamSizeMode:teamSizeMode,
+            maxAttempts:parseInt(maxAttempts),
+            type:type,
+            rewardType:rewardType,
+            reward:parseInt(reward),
+            entryFee:parseInt(entryFee),
+            competitionid:timestamp,
+            mapName:mapName,
+            shortDescription:shortDescription,
+            partner:partner,
+            recurring:recurring,
+            comp_mode:comp_mode,
+            partnerid:partner,
+            duration_min:parseInt(durtionMins),
+        };
     }
     else{
         var comp_mode = "LeaderBoard";
+        var data = {
+            header:header,
+            maxParticipants:parseInt(maxParticipants),
+            rank:rank,
+            teamSizeMode:teamSizeMode,
+            maxAttempts:parseInt(maxAttempts),
+            type:type,
+            rewardType:rewardType,
+            reward:parseInt(reward),
+            entryFee:parseInt(entryFee),
+            reviewTime_min:reviewTime,
+            competitionid:timestamp,
+            nextEventDate:start_Date,
+            mapName:mapName,
+            shortDescription:shortDescription,
+            partner:partner,
+            recurring:recurring,
+            comp_mode:comp_mode,
+            partnerid:partner,
+            duration_min:parseInt(durtionMins),
+        };
     }
-    await setDoc(doc(db, "competition_templates", header), {
-        header:header,
-        maxParticipants:parseInt(maxParticipants),
-        rank:rank,
-        teamSizeMode:teamSizeMode,
-        maxAttempts:parseInt(maxAttempts),
-        type:type,
-        rewardType:rewardType,
-        reward:parseInt(reward),
-        entryFee:parseInt(entryFee),
-        reviewTime_min:reviewTime,
-        competitionid:timestamp,
-        nextEventDate:start_Date,
-        mapName:mapName,
-        shortDescription:shortDescription,
-        partner:partner,
-        recurring:recurring,
-        comp_mode:comp_mode,
-        partnerid:partner,
-        duration_min:parseInt(durtionMins),
-    })
+    await setDoc(doc(db, "competition_templates", header),data)
     .then(function(){
         TimerSweet("Success!","Saved Successfully","success",2000);
         setTimeout(function(){
@@ -170,5 +188,15 @@ function FillDaysHoursMins(){
     for(var i=0; i<=60; i++){
         var option = '<option value='+i+'>'+i+'</option>';
         $('#mins').append(option);
+    }
+}
+function ChangeDesign(){
+    if($('#comp_mode').is(":checked")){
+        $('.notHead').hide();
+        $('.playtimewindow').show();
+    }
+    else{
+        $('.playtimewindow').hide();
+        $('.notHead').show();
     }
 }

@@ -171,7 +171,7 @@
                                 <h3>Add Competitions</h3>
                                 <div class="form-check form-switch">
                                     <span class="form-check-label" for="" style="float: left;">Leaderboard</span>
-                                    <input type="checkbox" class="form-check-input" id="comp_mode" style="margin-left: 9px;">
+                                    <input onchange="ChangeDesign()" type="checkbox" class="form-check-input" id="comp_mode" style="margin-left: 9px;">
                                     <label class="form-check-label" for="comp_mode">Head 2 Head</label>
                                 </div>
                             </div>
@@ -252,13 +252,13 @@
                                             <input type="text" id="reward" class="form-control number_valid" maxlength="10">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 notHead">
                                         <div class="form-group">
                                             <label>Max Participants</label>
                                             <input type="text" id="maxParticipants" class="form-control number_valid" maxlength="10">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 notHead">
                                         <div class="form-group">
                                             <label>Rank</label>
                                             <select class="form-select" id="rank">
@@ -285,7 +285,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 notHead">
                                         <div class="form-group">
                                             <label>Review Time</label>
                                             <input type="text" id="reviewTime" maxlength="4" value="60" class="form-control number_valid">
@@ -297,11 +297,16 @@
                                             <textarea type="text" id="shortDescription" class="form-control" maxlength="100"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 notHead">
                                         <div class="form-group">
                                             <label>Start Date</label>
                                             <input type="text" readonly  id="startDate" class="form-control flatpickr-date-time flatpickr-input">
                                         </div>
+                                    </div>
+                                    <div class="col-md-12 playtimewindow">
+                                        <p>
+                                            Play Time Window
+                                        </p>
                                     </div>
                                     <div class="col-md-12">
                                         <p>Duration</p>
