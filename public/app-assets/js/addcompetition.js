@@ -76,10 +76,7 @@ async function SaveCompetition(){
         sweetMessage("Warning!","Please enter header value","warning");
         return false;
     }
-    if(!maxParticipants.replace(/\s/g, '').length){
-        sweetMessage("Warning!","Please enter Max Participants","warning");
-        return false;
-    }
+    
     if(!maxAttempts.replace(/\s/g, '').length){
         sweetMessage("Warning!","Please enter Max Attempts","warning");
         return false;
@@ -114,10 +111,7 @@ async function SaveCompetition(){
         return false;
     }
 
-    if(start_Date < new Date()){
-        sweetMessage("Warning!","Start date cannot be smaller than todays date","warning");
-        return false;
-    }
+    
     $('add_btn').addClass("btn-progress");
     var durtionMins = (days *1440) + (hours * 60) + mins; 
     var timestamp = new Date().getTime().toString();
@@ -142,6 +136,14 @@ async function SaveCompetition(){
         };
     }
     else{
+        if(!maxParticipants.replace(/\s/g, '').length){
+            sweetMessage("Warning!","Please enter Max Participants","warning");
+            return false;
+        }
+        if(start_Date < new Date()){
+            sweetMessage("Warning!","Start date cannot be smaller than todays date","warning");
+            return false;
+        }
         var comp_mode = "LeaderBoard";
         var data = {
             header:header,
