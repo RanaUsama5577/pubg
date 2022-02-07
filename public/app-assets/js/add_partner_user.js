@@ -57,7 +57,7 @@ async function AddPartnerUser(){
     }
     
     $('#add_btn').addClass("btn-progress");
-    var baseUrl = 'http://localhost:5001/cgameapp-ac1d4/us-central1/app/CreatePartnerUser';
+    var baseUrl = 'https://us-central1-cgameapp-ac1d4.cloudfunctions.net/app/CreatePartnerUser';
     var getaUth = auth.getAuth();
     var user = getaUth.currentUser;
     var res = await getResponseFromUrl("Get",baseUrl+"?username="+ user_name + '&email=' +user_email + '&password=' + password,null,true);
