@@ -58,7 +58,6 @@ $(async function () {
                     $('.ForAdmin').remove();
                     if(data.status == 0){
                         $('.StatusOk').remove();
-                        window.location.href = "profile.html";
                     }
                 }
                 else {
