@@ -31,12 +31,36 @@ $(async function () {
     deleteDoc = exportData.deleteDoc;
     onSnapshot = exportData.onSnapshot;
     limit = exportData.limit;
-    createTable();
+
+    var getaUth = auth.getAuth();
+    auth.onAuthStateChanged(getaUth, async function (user) {
+        if (user) {
+            const docRef = doc(db, "admin", user.email);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                var data = docSnap.data();
+                if(data.role == 0){
+                    createTable("");
+                }
+                else if(data.role == 1){
+                    createTable(user.email);
+                }
+                else if(data.role == 2){
+                    createTable(data.created_by);
+                }
+            }
+        }
+    })
+    
 })
-async function createTable() {
+async function createTable(email) {
     const usersRef = collection(db, "competitions");
-    const q = query(usersRef,orderBy("startDate","asc"));
-    //const querySnapshot = await getDocs(q);
+    if(email == ""){
+        var q = query(usersRef,orderBy("startDate","asc"));
+    }
+    else{
+        var q = query(usersRef,where("partnerid","==",email),orderBy("startDate","asc"));
+    }
     try {
         onSnapshot(q, (querySnapshot)=>{
             $("#table-1").DataTable().destroy();

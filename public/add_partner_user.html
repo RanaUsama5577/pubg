@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-  <!-- BEGIN: Head-->
-  
+<!-- BEGIN: Head-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -110,7 +109,6 @@
             </li>
         </ul>
       </div>
-      
       <div class="main-menu-content">
         <div class="sidebar-user" style="display: inline-block;width: 100%;padding: 10px;text-align: center;">
           <div class="sidebar-user-picture">
@@ -195,14 +193,38 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Dashboard</h3>
+                                <h3>Add Partner</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/50b0a964-8a24-4905-bc67-d511f8791d5f/page/Gg3" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="user-name">Username</label>
+                                            <input type="text" id="user-name" class="form-control" maxlength="60">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="user-email">Email</label>
+                                            <input type="text" id="user-email" class="form-control" maxlength="60">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="user-password">Password</label>
+                                            <input type="text" id="user-password" class="form-control" maxlength="60">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="user-confirm-password">Confirm Password</label>
+                                            <input type="text" id="user-confirm-password" class="form-control" maxlength="60">
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-footer" style="text-align: end;">
+                                <button onclick="AddPartnerUser()" id="add_btn" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -235,7 +257,7 @@
     <script src="app-assets/js/custom.js"></script>
     <script src="app-assets/js/auth-check.js"></script>
     <script src="app-assets/js/logout.js"></script>
-    <script src="app-assets/js/addcompetition.js"></script>
+    <script src="app-assets/js/add_partner_user.js"></script>
     <script src="app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
     <script src="app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
     <script src="app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>

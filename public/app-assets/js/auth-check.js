@@ -23,7 +23,9 @@ $(async function () {
                 var data = docSnap.data();
                 $('#uid').val(docSnap.id);
                 $('#email').val(docSnap.id);
+                
                 if (data.role == 0) {
+                    $('.ForPartner').remove();
                     $('.user-role').html("Admin");
                     $(".imageUrl").attr('src', data.image_url);
                     $(".userImage").attr('src', data.image_url);
@@ -56,6 +58,28 @@ $(async function () {
                     $('.userName').html(data.name);
                     $('.user-name').html(data.name);
                     $('.ForAdmin').remove();
+                    if(data.status == 0){
+                        $('.StatusOk').remove();
+                    }
+                }
+                else if (data.role == 2) {
+                    $('.user-role').html("User");
+                    var image_url = data.image_url??"/mon.png";
+                    $(".imageUrl").attr('src', image_url);
+                    $(".userImage").attr('src', image_url);
+                    $('#username').val(data.name);
+                    $('#username2').val(data.name);
+                    if (data.name.length > 16) {
+                        var substr = data.name.substr(0, 14)
+                        $('#nav-user-name').html(substr + "..");
+                    }
+                    else {
+                        $('#nav-user-name').html(data.name);
+                    }
+                    $('.userName').html(data.name);
+                    $('.user-name').html(data.name);
+                    $('.ForAdmin').remove();
+                    $('.ForPartner').remove();
                     if(data.status == 0){
                         $('.StatusOk').remove();
                     }

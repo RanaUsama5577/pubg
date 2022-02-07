@@ -31,8 +31,8 @@ $(async function () {
     FillDaysHoursMins();
 })
 async function GetPartners() {
-    const usersRef = collection(db, "partners");
-    const q = query(usersRef);
+    const usersRef = collection(db, "admin");
+    const q = query(usersRef,where("role","==",1));
     const querySnapshot = await getDocs(q);
     try {
         $("#partner").html('');
@@ -40,7 +40,8 @@ async function GetPartners() {
             querySnapshot.forEach(function (doc) {
                 var data = doc.data();
                 var name = data.name;
-                var row = `<option value="${doc.id}">${name}</option>`;
+                var user_email = data.user_email;
+                var row = `<option value="${doc.id}">${name} (${user_email})</option>`;
                 $('#partner').append(row);
             })
         }
