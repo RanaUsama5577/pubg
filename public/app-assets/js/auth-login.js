@@ -65,6 +65,22 @@ $(async function () {
                                     second();
                                 }, 1000);
                             }
+                            else if (data.role == 1) {
+                                $('#login-email').addClass('is-valid');
+                                $('#login-password').addClass('is-valid');
+                                $('#login-password').removeClass('is-invalid');
+
+                                TimerSweet("Authentication Successful!", "You are logged in", "success",1500);
+                                setTimeout(function () {
+                                    $('#login-button').removeClass("btn-progress");
+                                    if(data.status == 1){
+                                        window.location.href = "competitions.html";
+                                    }
+                                    else{
+                                        window.location.href = "profile.html";
+                                    }
+                                }, 1000);
+                            }
                             else {
                                 var getaUth = auth.getAuth();
                                 auth.signOut(getaUth).then(() => {

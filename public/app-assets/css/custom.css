@@ -341,7 +341,7 @@ element.style {
 }
 .btn-progress {
     position: relative;
-    background-image: url("/assets/spinner-white.svg");
+    background-image: url("/app-assets/spinner-white.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 30px;

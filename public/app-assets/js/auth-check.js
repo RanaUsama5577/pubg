@@ -24,7 +24,6 @@ $(async function () {
                 $('#uid').val(docSnap.id);
                 $('#email').val(docSnap.id);
                 if (data.role == 0) {
-                    notifyIds = [1, 2, 3, 4];
                     $('.user-role').html("Admin");
                     $(".imageUrl").attr('src', data.image_url);
                     $(".userImage").attr('src', data.image_url);
@@ -39,6 +38,28 @@ $(async function () {
                     }
                     $('.userName').html(data.name);
                     $('.user-name').html(data.name);
+                }
+                else if (data.role == 1) {
+                    $('.user-role').html("Partner");
+                    var image_url = data.image_url??"/mon.png";
+                    $(".imageUrl").attr('src', image_url);
+                    $(".userImage").attr('src', image_url);
+                    $('#username').val(data.name);
+                    $('#username2').val(data.name);
+                    if (data.name.length > 16) {
+                        var substr = data.name.substr(0, 14)
+                        $('#nav-user-name').html(substr + "..");
+                    }
+                    else {
+                        $('#nav-user-name').html(data.name);
+                    }
+                    $('.userName').html(data.name);
+                    $('.user-name').html(data.name);
+                    $('.ForAdmin').remove();
+                    if(data.status == 0){
+                        $('.StatusOk').remove();
+                        window.location.href = "profile.html";
+                    }
                 }
                 else {
                     firebase
