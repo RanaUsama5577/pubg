@@ -23,7 +23,8 @@ $(async function () {
                 var data = docSnap.data();
                 $('#uid').val(docSnap.id);
                 $('#email').val(docSnap.id);
-                
+                $('#AppendIfframe').html(data.dashboard_iframe);
+                $('#dashboardIfframe').html(data.dashboard_iframe);
                 if (data.role == 0) {
                     $('.ForPartner').remove();
                     $('.user-role').html("Admin");

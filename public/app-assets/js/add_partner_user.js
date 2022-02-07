@@ -60,6 +60,7 @@ async function AddPartnerUser(){
     var baseUrl = 'https://us-central1-cgameapp-ac1d4.cloudfunctions.net/app/CreatePartnerUser';
     var getaUth = auth.getAuth();
     var user = getaUth.currentUser;
+    var frame= $('#dashboardIfframe').html();
     var res = await getResponseFromUrl("Get",baseUrl+"?username="+ user_name + '&email=' +user_email + '&password=' + password,null,true);
     if(res.code == 200){
         var user_data = {
@@ -71,6 +72,7 @@ async function AddPartnerUser(){
             "created_by" : user.email,
             "status":0,
             "created_at":new Date(),
+            "dashboard_iframe":frame,
         };
         await setDoc(doc(db, "admin", user_email),user_data)
         .then(function(){

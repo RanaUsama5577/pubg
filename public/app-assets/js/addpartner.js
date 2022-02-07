@@ -32,6 +32,7 @@ async function AddPartner(){
     var user_name = $('#user-name').val();
     var user_email = $('#user-email').val();
     var password = $('#user-password').val();
+    var ifframe = $('#ifframe').val();
     var confirm_password = $('#user-confirm-password').val();
 
     if(!user_name.replace(/\s/g, '').length){
@@ -40,6 +41,10 @@ async function AddPartner(){
     }
     if(!user_email.replace(/\s/g, '').length){
         sweetMessage("Warning!","Please enter user email","warning");
+        return false;
+    }
+    if(!ifframe.replace(/\s/g, '').length){
+        sweetMessage("Warning!","Please enter ifframe","warning");
         return false;
     }
     if(!password.replace(/\s/g, '').length){
@@ -68,6 +73,7 @@ async function AddPartner(){
             "user_id" : res.result,
             "status":0,
             "created_at":new Date(),
+            "dashboard_iframe":ifframe,
         };
         await setDoc(doc(db, "admin", user_email),user_data)
         .then(function(){
