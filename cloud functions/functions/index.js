@@ -40,8 +40,8 @@ app.get('/CreatePartnerUser', async (req, res) => {
 })
 
 async function SendEmail(to,password){
-  var senderEmail = "usamabusiness7861@gmail.com";
-  var senderPass = "1Q_2w3e4r";
+  var senderEmail = "admin@cgame.app";
+  var senderPass = "CGame123!";
   const authData= nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
