@@ -68,9 +68,9 @@ async function SaveCompetition(){
     var shortDescription = $('#shortDescription').val();
     var partner = $('#partner').val();
     var reviewTime = parseInt($('#reviewTime').val());
-    var days = $('#days').val();
-    var hours = $('#hours').val();
-    var mins = $('#mins').val();
+    var days = parseInt($('#days').val());
+    var hours = parseInt($('#hours').val());
+    var mins = parseInt($('#mins').val());
     var recurring = document.getElementById('recurring').checked;
     var start_Date = new Date(startDate);
     if(!header.replace(/\s/g, '').length){
