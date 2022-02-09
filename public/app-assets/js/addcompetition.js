@@ -98,20 +98,6 @@ async function SaveCompetition(){
         sweetMessage("Warning!","Please enter Short Description","warning");
         return false;
     }
-
-    if(!days.replace(/\s/g, '').length){
-        sweetMessage("Warning!","Please enter days","warning");
-        return false;
-    }
-    if(!hours.replace(/\s/g, '').length){
-        sweetMessage("Warning!","Please enter hours","warning");
-        return false;
-    }
-    if(!mins.replace(/\s/g, '').length){
-        sweetMessage("Warning!","Please enter mins","warning");
-        return false;
-    }
-
     
     $('add_btn').addClass("btn-progress");
     var durtionMins = (days *1440) + (hours * 60) + mins; 
